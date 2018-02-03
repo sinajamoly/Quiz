@@ -120,9 +120,15 @@ class Controller{
                 let target1=event.target.id;
                 let aTarget=target1.split("-");
                 if(aTarget[0]==="btn") {
+
                         controller.checkAnswer(aTarget[1]);
                         controller.addTotalAsked();
-                        controller.nextQuestion();
+                        setTimeout(function(){
+                            controller.nextQuestion();
+                            console.log("2 second");
+                            controller.update();
+                        },2000);
+
                 }
             if(controller.checkEndQuiz()){
                 let ui=new UI(controller.questionList[Controller.currentQuestion]);
